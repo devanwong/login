@@ -1,0 +1,24 @@
+<html>
+<head>
+	<link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+	<title></title>
+</head>
+<body>
+<h1>Welcome {{name}}! </h1>
+
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+				<p>{{message}}</p>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+		<form action='/logout' method='post'>
+		<input type='submit' value='logout'>
+		</form>
+<!-- 
+		<form action='/logins/delete' method='post'>
+		<input type='submit' value='delete user'>
+		</form> -->
+</body>
+</html>

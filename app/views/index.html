@@ -1,8 +1,36 @@
 <html>
-  <head>
-    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
-  </head>
-  <body>
-    The best place to start is the "WelcomeController.py" file in app/controllers.
-  </body>
+<head>
+	<link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+</head>
+<body>
+	<div id='container'>
+
+		{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+				<ul class=flashes>
+					{% for category, message in messages %}
+						<li class="{{ category }}">{{ message }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
+
+		<form action='logins/register' method='post'>
+			<h1>Registration</h1>
+			First Name:<input type="text" name='first_name'><br>
+			Last Name: <input type="text" name='last_name'><br>
+			Email: <input type="text" name='email'><br>
+			Password: <input type="text" name='password'><br>
+			Confirm pw: <input type="text" name='c_password'><br>
+			<input type='submit' value='Register'>
+		</form>
+		<form action='/logins/login' method='post'>
+			<h1>Login</h1>
+			Email:<input type="text" name='email'><br>
+			Password:<input type="text" name='password'><br>
+			<input type='submit' value='Login'>
+		</form>
+	</div>	
+
+</body>
 </html>
